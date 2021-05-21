@@ -240,6 +240,10 @@
       <Project>{67E27862-88A3-4EA2-8C10-A8F945D1CDD2}</Project>
       <Name>DotaGrid.App.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DotaGrid.model\DotaGrid.model.csproj">
+      <Project>{05b43817-14ba-4767-982b-cf8738f4b87d}</Project>
+      <Name>DotaGrid.model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

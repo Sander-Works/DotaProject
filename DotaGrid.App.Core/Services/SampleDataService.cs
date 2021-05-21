@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DotaGrid.App.Core.Models;
 
 namespace DotaGrid.App.Core.Services
-{
+{/*
     // This class holds sample data used by some generated pages to show how they can be used.
     // TODO WTS: The following classes have been created to display sample data. Delete these files once your app is using real data.
     // 1. Services/SampleDataService.cs
@@ -499,4 +499,5 @@ namespace DotaGrid.App.Core.Services
             return _allOrders;
         }
     }
+    */
 }
