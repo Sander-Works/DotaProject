@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.model", "DotaGrid.model.csproj", "{DE730347-06E4-41E2-9A94-B199B59A8557}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.DataAccess", "..\DotaGrid.DataAccess\DotaGrid.DataAccess.csproj", "{937AB5C2-696D-4EB0-95B1-7F367C745962}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.DataAccess.Maintenance", "..\DotaGrid.DataAccess.Maintenance\DotaGrid.DataAccess.Maintenance.csproj", "{D46FBC70-1732-4027-9099-40FC5025D075}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE730347-06E4-41E2-9A94-B199B59A8557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE730347-06E4-41E2-9A94-B199B59A8557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE730347-06E4-41E2-9A94-B199B59A8557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE730347-06E4-41E2-9A94-B199B59A8557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{937AB5C2-696D-4EB0-95B1-7F367C745962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{937AB5C2-696D-4EB0-95B1-7F367C745962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{937AB5C2-696D-4EB0-95B1-7F367C745962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{937AB5C2-696D-4EB0-95B1-7F367C745962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D46FBC70-1732-4027-9099-40FC5025D075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46FBC70-1732-4027-9099-40FC5025D075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46FBC70-1732-4027-9099-40FC5025D075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46FBC70-1732-4027-9099-40FC5025D075}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4E1882A-E637-45AF-A3BC-5EA657C81AF6}
+	EndGlobalSection
+EndGlobal
