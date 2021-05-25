@@ -30,7 +30,7 @@ namespace DotaGrid.API.Controllers
 
             return await heroes.ToListAsync();
         }
-
+        /*
         // GET: api/Heroes/5
         [HttpGet("{id}")]
         public ActionResult<Hero> GetHero(int id)
@@ -44,6 +44,7 @@ namespace DotaGrid.API.Controllers
 
             return hero;
         }
+        */
         /*
         // GET: api/Heroes/5/Classes
         [HttpGet("{id}/classes")]

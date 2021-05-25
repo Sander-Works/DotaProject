@@ -37,7 +37,7 @@ namespace DotaGrid.API
                              Password=yT2>ahH6;
                              MultipleActiveResultSets=True";*/
 
-            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=feunnebe;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<HeroContext>(options => options.UseSqlServer(connection));
         }
 

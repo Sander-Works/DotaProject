@@ -13,7 +13,7 @@ namespace DotaGrid.App.DataAccess
     {
 
         private readonly HttpClient _httpClient = new HttpClient();
-        private static readonly Uri heroBaseUri = new Uri("http://localhost:32168/api/Races");
+        private static readonly Uri heroBaseUri = new Uri("http://localhost:44943/api/heroes");
 
         public async Task<Hero[]> GetHeroesAsync()
         {

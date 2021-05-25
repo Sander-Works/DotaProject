@@ -66,7 +66,7 @@ namespace DotaGrid.App.ViewModels
                 NavigationService.Frame.SetListDataItemForNextConnectedAnimation(clickedItem);
                 NavigationService.Navigate<HeroGridDetailPage>(clickedItem.MainattributeId);
 
-                Debug.WriteLine(clickedItem.MainAttributeType);
+                //Debug.WriteLine(clickedItem.MainAttributeType);
             }
         }
         

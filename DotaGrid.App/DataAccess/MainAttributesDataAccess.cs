@@ -13,7 +13,7 @@ namespace DotaGrid.App.DataAccess
     {
 
         private readonly HttpClient _httpClient = new HttpClient();
-        private static readonly Uri mainAttributesBaseUri = new Uri("http://localhost:32168/api/MainAttributes");
+        private static readonly Uri mainAttributesBaseUri = new Uri("http://localhost:44943/api/mainAttributes");
 
         public async Task<MainAttributesDataAccess[]> GetMainAttributesAsync()
         {
