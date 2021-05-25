@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace DotaGrid.model
+namespace DotaGrid.Model
 {
     [Table("MainAttributes")]
 
@@ -15,6 +15,6 @@ namespace DotaGrid.model
         public int MainattributeId { get; set; }
         
         public string MainAttributeType { get; set; }
-        public ICollection<Hero> Heroes { get; set; }
+        public ICollection<Hero> Heroes { get; set; } = new List<Hero>();
     }
 }

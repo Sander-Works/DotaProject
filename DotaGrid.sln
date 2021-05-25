@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.DataAccess", "Dota
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.DataAccess.Maintenance", "DotaGrid.DataAccess.Maintenance\DotaGrid.DataAccess.Maintenance.csproj", "{F45BE361-2083-495E-A24D-8C00226FCDE4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.model", "DotaGrid.model\DotaGrid.model.csproj", "{05B43817-14BA-4767-982B-CF8738F4B87D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.Model", "DotaGrid.model\DotaGrid.Model.csproj", "{05B43817-14BA-4767-982B-CF8738F4B87D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotaGrid.App", "DotaGrid.App\DotaGrid.App.csproj", "{B55EB2D1-9BE9-402C-A9FD-E8513125911A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.App.Core", "DotaGrid.App.Core\DotaGrid.App.Core.csproj", "{67E27862-88A3-4EA2-8C10-A8F945D1CDD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotaGrid.API", "DotaGrid.API\DotaGrid.API.csproj", "{BF4ED895-FD10-4088-97D6-A374A691F556}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaGrid.API", "DotaGrid.API\DotaGrid.API.csproj", "{BF4ED895-FD10-4088-97D6-A374A691F556}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,5 @@
 ﻿using DotaGrid.DataAccess;
-using DotaGrid.model;
+using DotaGrid.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;

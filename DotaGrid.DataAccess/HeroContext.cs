@@ -1,4 +1,4 @@
-﻿using DotaGrid.model;
+﻿using DotaGrid.Model;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -58,8 +58,6 @@ namespace DotaGrid.DataAccess
                 return new HeroContext(optionsBuilder.Options);
         
             }
- 
-       
         } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

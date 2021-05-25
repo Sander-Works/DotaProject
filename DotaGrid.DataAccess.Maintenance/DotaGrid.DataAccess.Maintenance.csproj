@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotaGrid.DataAccess\DotaGrid.DataAccess.csproj" />
-    <ProjectReference Include="..\DotaGrid.model\DotaGrid.model.csproj" />
+    <ProjectReference Include="..\DotaGrid.model\DotaGrid.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿using DotaGrid.model;
+﻿using DotaGrid.Model;
 using System;
 using Microsoft.EntityFrameworkCore;
 

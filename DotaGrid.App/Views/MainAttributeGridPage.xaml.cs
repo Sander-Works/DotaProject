@@ -2,11 +2,12 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using DotaGrid.App.Core.Models;
-using DotaGrid.App.Core.Services;
+using System.Windows.Input;
+using DotaGrid.App.DataAccess;
+using DotaGrid.App.Helpers;
 using DotaGrid.App.Services;
-
+using DotaGrid.App.ViewModels;
+using DotaGrid.Model;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 
 using Windows.UI.Xaml.Controls;
@@ -14,50 +15,32 @@ using Windows.UI.Xaml.Navigation;
 
 namespace DotaGrid.App.Views
 {
-    public sealed partial class MainAttributeGridPage : Page, INotifyPropertyChanged
+    public sealed partial class MainAttributeGridPage : Page
     {
-        public ObservableCollection<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
 
-        public MainAttributeGridPage()
+        private ICommand _itemClickCommand;
+
+        public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<Hero>(OnItemClick));
+
+        private void OnItemClick(Hero obj)
         {
-            InitializeComponent();
+            throw new NotImplementedException();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            Source.Clear();
+        public MainAttributesViewModel ViewModel { get; } = new MainAttributesViewModel();
 
-            // Replace this with your actual data
-            var data = await SampleDataService.GetContentGridDataAsync();
-            foreach (var item in data)
+            public MainAttributeGridPage()
             {
-                Source.Add(item);
-            }
-        }
-
-        private void OnItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (e.ClickedItem is SampleOrder item)
-            {
-                NavigationService.Frame.SetListDataItemForNextConnectedAnimation(item);
-                NavigationService.Navigate<MainAttributeGridDetailPage>(item.OrderID);
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void Set<T>(ref T storage, T value, [CallerMemberName]string propertyName = null)
-        {
-            if (Equals(storage, value))
-            {
-                return;
+                InitializeComponent();
             }
 
-            storage = value;
-            OnPropertyChanged(propertyName);
-        }
+            protected override async void OnNavigatedTo(NavigationEventArgs e)
+            {
+                base.OnNavigatedTo(e);
 
-        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                await ViewModel.LoadMainAttributesAsync();
+            }
+       
     }
+    
 }

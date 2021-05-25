@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DotaGrid.model\DotaGrid.model.csproj" />
+    <ProjectReference Include="..\DotaGrid.model\DotaGrid.Model.csproj" />
   </ItemGroup>
 
 </Project>
