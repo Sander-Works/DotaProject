@@ -13,7 +13,7 @@ namespace DotaGrid.DataAccess.Maintenance
       
         static void Main(string[] args)
 
-        {
+        {   //local
             //var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
             var connection = @"Server=donau.hiof.no;
                             Database=sjriis;

@@ -20,7 +20,6 @@ namespace DotaGrid.API
         /// <summary>
         /// Startup klassen kjøres når apiet starter (fra program). Denne klassen holder på connection stringen og programmet snakker med databasen
         /// </summary>
-        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,11 +37,11 @@ namespace DotaGrid.API
             var connection = @"Server=donau.hiof.no;
                              Database=sjriis;
                              User id=sjriis;
-                             Password=a^4<A-U/;;
+                             Password=a^4<A-U/;
                              MultipleActiveResultSets=True";
             
             
-            
+            //local
             //var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
             
 

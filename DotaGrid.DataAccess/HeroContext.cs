@@ -17,26 +17,6 @@ namespace DotaGrid.DataAccess
         public HeroContext(DbContextOptions<HeroContext> options) : base(options) { }
 
 
-        /*
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
-            {
-                DataSource = "(localdb)\\MSSQLLocalDB",
-                InitialCatalog = "sjriis",
-                IntegratedSecurity = true
-                /*
-                / DataSource = "Donau.hiof.no",
-                InitialCatalog = "sjriis",
-                UserID = "sjriis",
-                Password = "yT2>ahH6" /BYTT
-                
-            };
-
-            optionsBuilder.UseSqlServer(builder.ConnectionString.ToString());
-        }
-            */
-
         /// <summary>
         /// Database connection
         /// </summary>
@@ -44,6 +24,7 @@ namespace DotaGrid.DataAccess
         {
             public HeroContext CreateDbContext(string[] args)
             {
+                //local
                 //var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
                 
                 
