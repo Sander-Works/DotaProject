@@ -7,15 +7,15 @@ namespace DotaGrid.DataAccess
 {
     public class HeroContext : DbContext
     {
+
+        /// <summary>
+        /// Klassen som lager databasen, den forklarer også hvordan hero ser ut
+        /// </summary>
         public DbSet<Hero> Heroes { get; set; }
         public DbSet<Mainattribute> MainAttributes { get; set; }
        
-
         public HeroContext(DbContextOptions<HeroContext> options) : base(options) { }
-        /// <summary>
-        /// Local Database
-        /// </summary>
-        /// 
+
 
         /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -37,23 +37,25 @@ namespace DotaGrid.DataAccess
         }
             */
 
-        
+        /// <summary>
+        /// Database connection
+        /// </summary>
          public class HeroContextFactory : IDesignTimeDbContextFactory<HeroContext>
         {
             public HeroContext CreateDbContext(string[] args)
             {
-                var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
+                //var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
                 
-                /*
+                
                 var connection = @"Server=donau.hiof.no;
                                  Database=sjriis;
                                  User id=sjriis;
-                                 Password=et4S3W9J;
+                                 Password=a^4<A-U/;;
                                  MultipleActiveResultSets=True";
-                */
+                
 
                 var optionsBuilder = new DbContextOptionsBuilder<HeroContext>();
-                optionsBuilder.UseSqlServer(connection, x => x.MigrationsAssembly("DotaGrid.DataContext.Migrations"));
+                optionsBuilder.UseSqlServer(connection, x => x.MigrationsAssembly("DotaGrid.DataAccess.Maintenance"));
 
                 return new HeroContext(optionsBuilder.Options);
         
@@ -62,7 +64,7 @@ namespace DotaGrid.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Mainattribute and Hero relationship
+            //Mange til en forhold mainattribute -> heroes
             modelBuilder.Entity<Mainattribute>()
                 .HasMany(m => m.Heroes)
                 .WithOne(h => h.Mainattribute);

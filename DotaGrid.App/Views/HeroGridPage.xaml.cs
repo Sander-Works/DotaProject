@@ -22,7 +22,6 @@ namespace DotaGrid.App.Views
             Loaded += HeroGridPage_Loaded; 
         }
         /*
-
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);

@@ -1,16 +1,25 @@
 ﻿using DotaGrid.Model;
 using System;
 using Microsoft.EntityFrameworkCore;
-
-
+using System.Collections.ObjectModel;
 
 namespace DotaGrid.DataAccess.Maintenance
 {
     class Program
     {
+        /// <summary>
+        /// Program som kan brukes til å seede databasen
+        /// </summary>
+      
         static void Main(string[] args)
+
         {
-            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
+            //var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=donau.hiof.no;
+                            Database=sjriis;
+                            User id=sjriis;
+                            Password=a^4<A-U/;
+                            MultipleActiveResultSets=True";
             var optionsBuilder = new DbContextOptionsBuilder<HeroContext>();
             optionsBuilder.UseSqlServer(connection);
 
@@ -62,6 +71,7 @@ namespace DotaGrid.DataAccess.Maintenance
                     Ms = inputMs,
                     Armor = inputArmor
                 };
+                
                 db.Heroes.Add(newHero);
                 db.SaveChanges();
             }

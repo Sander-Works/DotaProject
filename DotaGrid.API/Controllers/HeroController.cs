@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace DotaGrid.API.Controllers
 {
+
+    /// <summary>
+    /// Denne klassen forteller APIet hvordan den skal håndtere heroes (Ferdig generert)
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class HeroController : ControllerBase

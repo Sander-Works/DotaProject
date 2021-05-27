@@ -16,6 +16,9 @@ namespace DotaGrid.App.ViewModels
 {
     public class HeroDetailViewModel : Observable
     {
+        /// <summary>
+        /// Dekke klassen henter informasjon fra GUI og bruker funksjonene fra heroDataAccess klassen
+        /// </summary>
         private readonly HeroesDataAccess heroDetailDataAccess = new HeroesDataAccess();
         public ObservableCollection<Hero> Heroes { get; set; } = new ObservableCollection<Hero>();
 
@@ -28,24 +31,7 @@ namespace DotaGrid.App.ViewModels
             set { Set(ref _item, value); }
         }
         
-        private Mainattribute _MainAttribute;
-
-        public Mainattribute MainAttribute
-        {
-            get => _MainAttribute;
-            set
-            {
-                if (Equals(_MainAttribute, value))
-                {
-                    return;
-                }
-
-                _MainAttribute = value;
-
-                OnPropertyChanged(nameof(Mainattribute));
-            }
-        }
-        
+        //Dette er alle attributtene som kan hentes fra GUI
         private string _Name;
 
         public string Name
@@ -219,15 +205,23 @@ namespace DotaGrid.App.ViewModels
             }
         }
 
+        //Dette er kommandoen man binder til xaml for å hente, slette eller oppdatere
         internal RelayCommand AddCommand { get; set; }
         public RelayCommand<Hero> EditCommand { get; set; }
         public RelayCommand<Hero> DeleteCommand { get; set; }
        
-
-
         public HeroDetailViewModel()
         {
             AddCommand = new RelayCommand(AddHeroAsync);
+
+
+            DeleteCommand = new RelayCommand<Hero>(async param =>
+            {
+                if (await heroDetailDataAccess.DeleteHeroAsync(param))
+                {
+                    Heroes.Remove(param);
+                }
+            }, param => param != null);
 
             EditCommand = new RelayCommand<Hero>(async param =>
             {
@@ -255,41 +249,13 @@ namespace DotaGrid.App.ViewModels
             }, param => param != null);
 
 
-                DeleteCommand = new RelayCommand<Hero>(async param =>
-                {
-                    if (await heroDetailDataAccess.DeleteHeroAsync(param))
-                    {
-                        Heroes.Remove(param);
-                    }
-                }, param => param != null);
-            }
-
-    
-        internal async Task LoadHeroesAsync(int heroId)
-        {
-            // TODO WTS: Replace this with your actual data
-            var heroes = await heroDetailDataAccess.GetHeroesAsync();
-            Item = heroes.First(i => i.HeroId == heroId);
-
         }
 
-        internal async Task LoadHeroesAsync()
-        {
-            // TODO WTS: Replace this with your actual data
-            Hero[] heroes = await heroDetailDataAccess.GetHeroesAsync();
-            foreach (Hero hero in heroes)
-            {
-                Heroes.Add(hero);
-            }
-
-        }
-
-        
         internal async void AddHeroAsync()
         {
-            Hero newHero = new Hero() {
+            Hero newHero = new Hero()
+            {
                 Name = Name,
-                //Mainattribute = MainAttribute,
                 Q = Q,
                 W = W,
                 E = E,
@@ -298,9 +264,27 @@ namespace DotaGrid.App.ViewModels
                 Hp = Hp,
                 Mana = Mana,
                 Armor = Armor,
-                Playstyle = Playstyle };
+                Playstyle = Playstyle
+            };
             await heroDetailDataAccess.PostHeroAsync(newHero);
             Heroes.Add(newHero);
+            NavigationService.GoBack();
+        }
+
+        //Har begge disse (ferdig generert) fordi heroDetailViewModel, brukes av flere sider
+        internal async Task LoadHeroesAsync(int heroId)
+        {
+        var heroes = await heroDetailDataAccess.GetHeroesAsync();
+        Item = heroes.First(i => i.HeroId == heroId);
+        }
+
+        internal async Task LoadHeroesAsync()
+        {
+            Hero[] heroes = await heroDetailDataAccess.GetHeroesAsync();
+            foreach (Hero hero in heroes)
+            {
+                Heroes.Add(hero);
+            }
         }
     }   
 }

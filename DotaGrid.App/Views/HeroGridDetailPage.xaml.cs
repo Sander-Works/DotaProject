@@ -39,5 +39,15 @@ namespace DotaGrid.App.Views
                 NavigationService.Frame.SetListDataItemForNextConnectedAnimation(ViewModel.Item);
             }
         }
+
+        private void EditThisHero(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(typeof(DeleteAndEditPage));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -10,12 +10,14 @@ using System.Diagnostics;
 
 namespace DotaGrid.App.DataAccess
 {
-    internal class HeroesDataAccess
+    public class HeroesDataAccess
     {
 
         private readonly HttpClient _httpClient = new HttpClient();
         private static readonly Uri heroBaseUri = new Uri("http://localhost:44943/api/hero");
 
+
+        //Henter helter
         public async Task<Hero[]> GetHeroesAsync()
         {
             HttpResponseMessage result = await _httpClient.GetAsync(heroBaseUri);
@@ -25,7 +27,7 @@ namespace DotaGrid.App.DataAccess
 
             return heroes;
         }
-        
+        //Legger til helter
         internal async Task<bool> PostHeroAsync(Hero hero)
         {
             string json = JsonConvert.SerializeObject(hero);
@@ -43,13 +45,14 @@ namespace DotaGrid.App.DataAccess
                 return false;
         }
 
-
+        //Sletter helter
         internal async Task<bool> DeleteHeroAsync(Hero hero)
         {
             HttpResponseMessage result = await _httpClient.DeleteAsync(new Uri(heroBaseUri, "hero/" + hero.HeroId.ToString()));
             return result.IsSuccessStatusCode;
         }
 
+        //Oppdaterer helter
         internal async Task<bool> PutHeroAsync(Hero hero)
         {
             Debug.WriteLine("Jeg har kjørt");

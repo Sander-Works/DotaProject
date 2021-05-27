@@ -90,7 +90,9 @@
                     Margin="{StaticResource MediumBottomMargin}"
                     Style="{StaticResource DetailBodyStyle}"
                     Text="{x:Bind ViewModel.Item.Playstyle, Mode=TwoWay}" />
+                <Button Click="EditThisHero" Content="Edit this hero"></Button>
             </StackPanel>
+           
         </ScrollViewer>
     </Grid>
 </Page>

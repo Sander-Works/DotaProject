@@ -15,6 +15,7 @@ namespace DotaGrid.App.DataAccess
         private readonly HttpClient _httpClient = new HttpClient();
         private static readonly Uri mainAttributesBaseUri = new Uri("http://localhost:44943/api/mainAttributes");
 
+        //Henter mainattributes
         public async Task<Mainattribute[]> GetMainAttributesAsync()
         {
             HttpResponseMessage result = await _httpClient.GetAsync(mainAttributesBaseUri);
@@ -23,13 +24,6 @@ namespace DotaGrid.App.DataAccess
 
             return mainAttributes;
         }
-        /*
-        internal async Task<Hero[]> GetListedHeroesAsync(int mainAttributeId)
-        {
-            HttpResponseMessage result = await _httpClient.GetAsync(new Uri(mainAttributesBaseUri, $"MainAttributes/{mainAttributeId}/Heroes"));
-            string json = await result.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Hero[]>(json);
-        }
-        */
+       
     }
 }

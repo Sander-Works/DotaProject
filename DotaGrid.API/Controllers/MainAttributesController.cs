@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotaGrid.API.Controllers
 {
+    /// <summary>
+    /// Denne klassen forteller APIet hvordan den skal håndtere mainattributes. Denne klassen blir ikke så mye brukt siden jeg ikke endte med å la brukeren hjøre handlinger med mainattribute 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class MainAttributesController : ControllerBase

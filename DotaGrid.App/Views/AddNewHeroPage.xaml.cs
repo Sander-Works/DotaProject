@@ -23,7 +23,7 @@ namespace Dota.Views
     {
 
         public HeroDetailViewModel ViewModel { get; } = new HeroDetailViewModel();
-
+        
         private Hero _item;
 
         public Hero Item
@@ -31,6 +31,7 @@ namespace Dota.Views
             get { return _item; }
             set { Set(ref _item, value); }
         }
+        
 
         public AddNewHeroPage()
         {

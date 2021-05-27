@@ -17,6 +17,10 @@ namespace DotaGrid.API
 {
     public class Startup
     {
+        /// <summary>
+        /// Startup klassen kjøres når apiet starter (fra program). Denne klassen holder på connection stringen og programmet snakker med databasen
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,16 +33,21 @@ namespace DotaGrid.API
         {
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-);
+    );
+            
+            var connection = @"Server=donau.hiof.no;
+                             Database=sjriis;
+                             User id=sjriis;
+                             Password=a^4<A-U/;;
+                             MultipleActiveResultSets=True";
+            
+            
+            
+            //var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
+            
 
-            /*var connection = @"Server=donau.hiof.no;
-                             Database=feunnebe;
-                             User id=feunnebe;
-                             Password=yT2>ahH6;
-                             MultipleActiveResultSets=True";*/
-
-            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=sjriis;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<HeroContext>(options => options.UseSqlServer(connection));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +58,7 @@ namespace DotaGrid.API
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();
+            //app.UseHttpsRedirection(); //Denne ga meg en del error, om du får Https problemer. Skru det av
 
             app.UseRouting();
 

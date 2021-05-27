@@ -5,7 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DotaGrid.Model
-{
+{/// <summary>
+///  Klassen som definerer Hero  
+///  Setter også opp tabel navn her
+/// </summary>
    
     [Table("Hero")]
     public class Hero

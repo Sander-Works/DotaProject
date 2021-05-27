@@ -17,13 +17,6 @@ namespace DotaGrid.App.Views
 {
     public sealed partial class MainAttributeGridPage : Page
     {
-    /*
-        private ICommand _itemClickCommand;
-
-        public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<Mainattribute>(OnItemClick));
-        */
-        
-
         public MainAttributesViewModel ViewModel { get; } = new MainAttributesViewModel();
 
         public MainAttributeGridPage()

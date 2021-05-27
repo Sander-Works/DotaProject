@@ -18,6 +18,7 @@ namespace DotaGrid.App.ViewModels
 {
     public class HeroViewModel : Observable
     {
+        //Laster inn helter i griden
         private ICommand _itemClickCommand;
 
         public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<Hero>(OnItemClick));
@@ -25,31 +26,12 @@ namespace DotaGrid.App.ViewModels
         public ObservableCollection<Hero> Heroes { get; set; } = new ObservableCollection<Hero>();
         private readonly HeroesDataAccess heroesDataAccess = new HeroesDataAccess();
 
-        private Hero _item;
-
-        public Hero Item
-        {
-            get { return _item; }
-            set { Set(ref _item, value); }
-        }
-
-        public RelayCommand<Hero> DeleteCommand { get; set; }
-
-
+     
         public HeroViewModel()
         {
 
-            DeleteCommand = new RelayCommand<Hero>(async param =>
-            {
-                if (await heroesDataAccess.DeleteHeroAsync(param))
-                {
-                    Heroes.Remove(param);
-                }
-            }, param => param != null);
         }
-    
-
-      
+   
         public async Task LoadHeroesAsync()
         {
             var heroes = await heroesDataAccess.GetHeroesAsync();
@@ -66,17 +48,7 @@ namespace DotaGrid.App.ViewModels
                 NavigationService.Frame.SetListDataItemForNextConnectedAnimation(clickedHero);
                 NavigationService.Navigate<HeroGridDetailPage>(clickedHero.HeroId);
 
-                Debug.WriteLine(clickedHero.Name);
             }
-        }
-
-        private void Save(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(typeof(HeroGridPage));
-        }
-        private void Cancel(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(typeof(MainAttributeGridPage));
         }
     }
 }

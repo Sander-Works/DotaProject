@@ -6,8 +6,11 @@ using System.Text;
 
 namespace DotaGrid.Model
 {
+    /// <summary>
+    /// Klassen som definerer Mainattributes
+    /// Navngir også tabellen
+    /// </summary>
     [Table("MainAttributes")]
-
     public class Mainattribute
     {
         [Required]
