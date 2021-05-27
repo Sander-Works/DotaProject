@@ -9,27 +9,27 @@ using System.Threading.Tasks;
 
 namespace DotaGrid.App.DataAccess
 {
-    public class MainAttributesDataAccess
+    internal class MainAttributesDataAccess
     {
 
         private readonly HttpClient _httpClient = new HttpClient();
         private static readonly Uri mainAttributesBaseUri = new Uri("http://localhost:44943/api/mainAttributes");
 
-        public async Task<MainAttributesDataAccess[]> GetMainAttributesAsync()
+        public async Task<Mainattribute[]> GetMainAttributesAsync()
         {
             HttpResponseMessage result = await _httpClient.GetAsync(mainAttributesBaseUri);
             string json = await result.Content.ReadAsStringAsync();
-            MainAttributesDataAccess[] mainAttributes = JsonConvert.DeserializeObject<MainAttributesDataAccess[]>(json);
+            Mainattribute[] mainAttributes = JsonConvert.DeserializeObject<Mainattribute[]>(json);
 
             return mainAttributes;
         }
-
+        /*
         internal async Task<Hero[]> GetListedHeroesAsync(int mainAttributeId)
         {
             HttpResponseMessage result = await _httpClient.GetAsync(new Uri(mainAttributesBaseUri, $"MainAttributes/{mainAttributeId}/Heroes"));
             string json = await result.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Hero[]>(json);
         }
-
+        */
     }
 }

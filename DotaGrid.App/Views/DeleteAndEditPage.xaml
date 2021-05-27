@@ -1,0 +1,89 @@
+﻿<Page
+    x:Class="DotaGrid.App.Views.DeleteAndEditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DotaGrid.App.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:model="using:DotaGrid.Model"
+    Loaded="Page_Loaded"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer>
+        <Grid x:Name="ContentArea">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="{StaticResource SmallLeftTopRightBottomMargin}"  BorderThickness="1" CornerRadius="10">
+                <StackPanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}">
+                    <TextBlock Margin="{StaticResource SmallTopBottomMargin}" Text="Heroes" />
+
+                    <ListView  x:Name="heroes" ItemsSource="{x:Bind ViewModel.Heroes}">
+                        <ListView.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Spacing="110">
+                                    <TextBlock  FontSize="17" Text="Name"  Style="{StaticResource BaseTextBlockStyle}" />
+                                    <TextBlock  FontSize="17" Text=" Q-Ability"  Style="{StaticResource BaseTextBlockStyle}" />
+                                    <TextBlock  FontSize="17" Text="W-Ability"  Style="{StaticResource BaseTextBlockStyle}" />
+                                    <TextBlock  FontSize="17" Text="E-Ability"  Style="{StaticResource BaseTextBlockStyle}" />
+                                    <TextBlock  FontSize="17" Text="Ultimate"  Style="{StaticResource BaseTextBlockStyle}" />
+                                    <TextBlock  FontSize="17" Text="Hp"  Style="{StaticResource BaseTextBlockStyle}" />
+                                    <TextBlock  FontSize="17" Text="Mana"  Style="{StaticResource BaseTextBlockStyle}" />
+                                    <TextBlock  FontSize="17" Text="Ms"  Style="{StaticResource BaseTextBlockStyle}" />
+                                    <TextBlock  FontSize="17" Text="Armor"  Style="{StaticResource BaseTextBlockStyle}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.HeaderTemplate>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Hero">
+                                <StackPanel Background="Transparent" Orientation="Horizontal" Spacing="110" Padding="-10,0,0,0">
+                                    <TextBlock FontSize="17" Text="{x:Bind Name}" />
+                                    <TextBlock FontSize="17" Text="{x:Bind Q}" />
+                                    <TextBlock FontSize="17" Text="{x:Bind W}"  />
+                                    <TextBlock FontSize="17" Text="{x:Bind E}" />
+                                    <TextBlock FontSize="17" Text="{x:Bind Ultimate}"/>
+                                    <TextBlock FontSize="17" Text="{x:Bind Hp}" />
+                                    <TextBlock FontSize="17" Text="{x:Bind Mana}" />
+                                    <TextBlock FontSize="17" Text="{x:Bind Ms}"/>
+                                    <TextBlock FontSize="17" Text="{x:Bind Armor}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" VerticalAlignment="Bottom"  Margin="{StaticResource SmallLeftTopRightBottomMargin}" BorderThickness="1" CornerRadius="10">
+
+                <TextBlock Margin="{StaticResource XSmallLeftTopRightBottomMargin}"  Text="Edit selected hero" FontSize="30"/>
+
+                <RelativePanel Margin="{StaticResource XSmallLeftTopRightBottomMargin}" Padding="{StaticResource SmallTopMargin}">
+                    <StackPanel x:Name="Ablilitespanel" Orientation="Horizontal">
+                        <TextBox Text="{Binding ElementName=heroes, Path=SelectedItem.Name, Mode=TwoWay}"  PlaceholderText="Hero Name" Width="180" Height="40" FontSize="20" />
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.Q, Mode=TwoWay}" PlaceholderText="Q" Width="180" Height="40" FontSize="20" />
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.W, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" PlaceholderText="W" Width="180" Height="40" FontSize="20" />
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.E, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="E" Width="180" Height="40" FontSize="20" />
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.Ultimate, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ultimate" Width="180" Height="40" FontSize="20" />
+                    </StackPanel>
+                    <StackPanel x:Name="Stats" Orientation="Horizontal" RelativePanel.Below="Ablilitespanel" Padding="-5, 10">
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.Hp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Hp" Width="180" Height="40" FontSize="20" />
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.Mana, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Mana" Width="180" Height="40" FontSize="20" />
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.Ms, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Ms" Width="180" Height="40" FontSize="20" />
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.Armor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Armor" Width="180" Height="40" FontSize="20" />
+                        <TextBox  Margin="5, 0, 0, 0" Text="{Binding ElementName=heroes, Path=SelectedItem.Playstyle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Playstyle" Width="180" Height="40" FontSize="20" />
+
+                    </StackPanel>
+                    <StackPanel RelativePanel.Below="Stats" Spacing="5">
+                        <Button x:Name="Update" Content="Save edit" Width="75" Command="{x:Bind ViewModel.EditCommand}" CommandParameter="{Binding ElementName=heroes, Path=SelectedItem}" />
+                        <Button  x:Name="Delete" Content="Delete" Width="75"  Command="{x:Bind ViewModel.DeleteCommand}" CommandParameter="{Binding ElementName=heroes, Path=SelectedItem}" />
+                        <Button Click="Add" Width="75">Add hero</Button>
+                    </StackPanel>
+                </RelativePanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

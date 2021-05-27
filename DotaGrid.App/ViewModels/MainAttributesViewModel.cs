@@ -22,6 +22,36 @@ namespace DotaGrid.App.ViewModels
 
         public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<Mainattribute>(OnItemClick));
 
+
+        public ObservableCollection<Mainattribute> MainAttributes { get; } = new ObservableCollection<Mainattribute>();
+        private readonly MainAttributesDataAccess mainAttributesDataAccess = new MainAttributesDataAccess();
+
+        public MainAttributesViewModel()
+        {
+        }
+
+        public async Task LoadMainAttributesAsync()
+        {
+            var data = await mainAttributesDataAccess.GetMainAttributesAsync();
+
+            foreach (Mainattribute mainAttribute in data)
+            {
+                MainAttributes.Add(mainAttribute);
+            }
+        }
+
+
+
+        private void OnItemClick(Mainattribute clickedItem)
+        {
+            if (clickedItem != null)
+            {
+                NavigationService.Frame.SetListDataItemForNextConnectedAnimation(clickedItem);
+                NavigationService.Navigate<HeroGridPage>(clickedItem.MainattributeId);
+            }
+        }
+
+        /*
         
         private Mainattribute _selected;
         public Mainattribute Selected
@@ -33,7 +63,7 @@ namespace DotaGrid.App.ViewModels
             set
             {
                 Set(ref _selected, value);
-                LoadListedHeroesAsync(((Mainattribute)value).MainattributeId);
+                LoadMainAttributesAsync(((Mainattribute)value).MainattributeId);
             }
         }
         
@@ -70,7 +100,7 @@ namespace DotaGrid.App.ViewModels
             }
         }
         
-
+        /*
         internal async void LoadListedHeroesAsync(int mainAttributeId)
         {
             var heroes = await mainAttributesDataAccess.GetListedHeroesAsync(mainAttributeId);
@@ -78,5 +108,6 @@ namespace DotaGrid.App.ViewModels
             foreach (Hero @hero in heroes)
                 ListedHeroes.Add(@hero);
         }
+        */
     }
 }

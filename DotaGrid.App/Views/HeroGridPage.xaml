@@ -19,7 +19,7 @@
             ItemHeight="160"
             IsItemClickEnabled="True"
             ItemClickCommand="{x:Bind ViewModel.ItemClickCommand}" 
-            ItemsSource="{x:Bind ViewModel.Heroes}"
+            ItemsSource="{x:Bind ViewModel.Heroes, Mode=OneWay}"
             SelectionMode="None"
             StretchContentForSingleRow="False">
             <controls:AdaptiveGridView.ItemTemplate>
@@ -29,16 +29,18 @@
                         Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                         Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <FontIcon Glyph="{x:Bind Name}" />
                             <TextBlock
                                 Margin="{StaticResource XXSmallTopMargin}"
                                 HorizontalAlignment="Center"
                                 Style="{ThemeResource BodyTextStyle}"
-                                Text="{x:Bind Name}" />
+                                Text="{x:Bind Name}"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </controls:AdaptiveGridView.ItemTemplate>
         </controls:AdaptiveGridView>
+        <StackPanel  Margin="20" Orientation="Horizontal"  >
+            <Button Click="Edit">Delete, Edit or Add hero</Button>
+        </StackPanel>
     </Grid>
 </Page>

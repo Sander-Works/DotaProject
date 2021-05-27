@@ -132,7 +132,7 @@
       <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
+      <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -150,16 +150,18 @@
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultActivationHandler.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="ViewModels\HeroDetailViewModel.cs" />
     <Compile Include="ViewModels\HeroViewModel.cs" />
     <Compile Include="ViewModels\MainAttributesViewModel.cs" />
+    <Compile Include="Views\AddNewHeroPage.xaml.cs" />
+    <Compile Include="Views\DeleteAndEditPage.xaml.cs">
+      <DependentUpon>DeleteAndEditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HeroGridDetailPage.xaml.cs">
       <DependentUpon>HeroGridDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HeroGridPage.xaml.cs">
       <DependentUpon>HeroGridPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MainAttributeGridDetailPage.xaml.cs">
-      <DependentUpon>MainAttributeGridDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainAttributeGridPage.xaml.cs">
       <DependentUpon>MainAttributeGridPage.xaml</DependentUpon>
@@ -195,15 +197,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\AddNewHeroPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DeleteAndEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HeroGridDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\HeroGridPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\MainAttributeGridDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -2,25 +2,19 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-
+using Dota.Views;
 using DotaGrid.App.Services;
-
+using DotaGrid.App.ViewModels;
 using Microsoft.Toolkit.Uwp.UI.Animations;
-
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace DotaGrid.App.Views
-{/*
-    public sealed partial class HeroGridDetailPage : Page, INotifyPropertyChanged
+{
+    public sealed partial class HeroGridDetailPage : Page
     {
-        private SampleOrder _item;
-
-        public SampleOrder Item
-        {
-            get { return _item; }
-            set { Set(ref _item, value); }
-        }
+        public HeroDetailViewModel ViewModel { get; } = new HeroDetailViewModel();
 
         public HeroGridDetailPage()
         {
@@ -30,11 +24,10 @@ namespace DotaGrid.App.Views
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            this.RegisterElementForConnectedAnimation("animationKeyHeroGrid", itemHero);
-            if (e.Parameter is long orderID)
+            this.RegisterElementForConnectedAnimation("animationKeyClasses", itemHero);
+            if (e.Parameter is int heroId)
             {
-                var data = await SampleDataService.GetContentGridDataAsync();
-                Item = data.First(i => i.OrderID == orderID);
+                await ViewModel.LoadHeroesAsync(heroId);
             }
         }
 
@@ -43,24 +36,8 @@ namespace DotaGrid.App.Views
             base.OnNavigatingFrom(e);
             if (e.NavigationMode == NavigationMode.Back)
             {
-                NavigationService.Frame.SetListDataItemForNextConnectedAnimation(Item);
+                NavigationService.Frame.SetListDataItemForNextConnectedAnimation(ViewModel.Item);
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void Set<T>(ref T storage, T value, [CallerMemberName]string propertyName = null)
-        {
-            if (Equals(storage, value))
-            {
-                return;
-            }
-
-            storage = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        private void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-    */
 }

@@ -17,29 +17,26 @@ namespace DotaGrid.App.Views
 {
     public sealed partial class MainAttributeGridPage : Page
     {
-
+    /*
         private ICommand _itemClickCommand;
 
-        public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<Hero>(OnItemClick));
-
-        private void OnItemClick(Hero obj)
-        {
-            throw new NotImplementedException();
-        }
+        public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<Mainattribute>(OnItemClick));
+        */
+        
 
         public MainAttributesViewModel ViewModel { get; } = new MainAttributesViewModel();
 
-            public MainAttributeGridPage()
-            {
-                InitializeComponent();
-            }
+        public MainAttributeGridPage()
+        {
+            InitializeComponent();
+        }
 
-            protected override async void OnNavigatedTo(NavigationEventArgs e)
-            {
-                base.OnNavigatedTo(e);
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
 
-                await ViewModel.LoadMainAttributesAsync();
-            }
+            await ViewModel.LoadMainAttributesAsync();
+        }
        
     }
     

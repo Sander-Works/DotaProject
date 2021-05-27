@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml;
 
 namespace DotaGrid.App.ViewModels
 {
@@ -21,19 +22,40 @@ namespace DotaGrid.App.ViewModels
 
         public ICommand ItemClickCommand => _itemClickCommand ?? (_itemClickCommand = new RelayCommand<Hero>(OnItemClick));
 
-        public ObservableCollection<Hero> Heroes { get; } = new ObservableCollection<Hero>();
+        public ObservableCollection<Hero> Heroes { get; set; } = new ObservableCollection<Hero>();
         private readonly HeroesDataAccess heroesDataAccess = new HeroesDataAccess();
+
+        private Hero _item;
+
+        public Hero Item
+        {
+            get { return _item; }
+            set { Set(ref _item, value); }
+        }
+
+        public RelayCommand<Hero> DeleteCommand { get; set; }
+
 
         public HeroViewModel()
         {
-        }
 
+            DeleteCommand = new RelayCommand<Hero>(async param =>
+            {
+                if (await heroesDataAccess.DeleteHeroAsync(param))
+                {
+                    Heroes.Remove(param);
+                }
+            }, param => param != null);
+        }
+    
+
+      
         public async Task LoadHeroesAsync()
         {
-            var data = await heroesDataAccess.GetHeroesAsync();
-            foreach (var @hero in data)
+            var heroes = await heroesDataAccess.GetHeroesAsync();
+            foreach (Hero hero in heroes)
             {
-                Heroes.Add(@hero);
+                Heroes.Add(hero);
             }
         }
 
@@ -46,6 +68,15 @@ namespace DotaGrid.App.ViewModels
 
                 Debug.WriteLine(clickedHero.Name);
             }
+        }
+
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(typeof(HeroGridPage));
+        }
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(typeof(MainAttributeGridPage));
         }
     }
 }

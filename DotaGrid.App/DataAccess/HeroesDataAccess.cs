@@ -6,14 +6,15 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using DotaGrid.Model;
+using System.Diagnostics;
 
 namespace DotaGrid.App.DataAccess
 {
-    public class HeroesDataAccess
+    internal class HeroesDataAccess
     {
 
         private readonly HttpClient _httpClient = new HttpClient();
-        private static readonly Uri heroBaseUri = new Uri("http://localhost:44943/api/heroes");
+        private static readonly Uri heroBaseUri = new Uri("http://localhost:44943/api/hero");
 
         public async Task<Hero[]> GetHeroesAsync()
         {
@@ -24,8 +25,8 @@ namespace DotaGrid.App.DataAccess
 
             return heroes;
         }
-
-        internal async Task<bool> PostHeroesAsync(Hero hero)
+        
+        internal async Task<bool> PostHeroAsync(Hero hero)
         {
             string json = JsonConvert.SerializeObject(hero);
             HttpResponseMessage result = await _httpClient.PostAsync(heroBaseUri, new StringContent(json, Encoding.UTF8, "application/json"));
@@ -42,17 +43,20 @@ namespace DotaGrid.App.DataAccess
                 return false;
         }
 
-        internal async Task<bool> DeleteHeroesAsync(Hero hero)
+
+        internal async Task<bool> DeleteHeroAsync(Hero hero)
         {
-            HttpResponseMessage result = await _httpClient.DeleteAsync(new Uri(heroBaseUri, "heroes/" + hero.HeroId.ToString()));
+            HttpResponseMessage result = await _httpClient.DeleteAsync(new Uri(heroBaseUri, "hero/" + hero.HeroId.ToString()));
             return result.IsSuccessStatusCode;
         }
 
-        internal async Task<bool> PutHeroesAsync(Hero hero)
+        internal async Task<bool> PutHeroAsync(Hero hero)
         {
+            Debug.WriteLine("Jeg har kjørt");
             string json = JsonConvert.SerializeObject(hero);
-            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(heroBaseUri, "heroes/" + hero.HeroId.ToString()), new StringContent(json, Encoding.UTF8, "application/json"));
+            HttpResponseMessage result = await _httpClient.PutAsync(new Uri(heroBaseUri, "hero/" + hero.HeroId.ToString()), new StringContent(json, Encoding.UTF8, "application/json"));
             return result.IsSuccessStatusCode;
         }
+        
     }
 }
