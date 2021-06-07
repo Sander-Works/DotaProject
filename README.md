@@ -1,5 +1,5 @@
 # DotaProject
-This is a C# app that is only created to make a REST API with the CRUD operations
+This is a C# app that is created to make a REST API with the CRUD operations
 
 How to run 
 ----------
