@@ -1,7 +1,6 @@
 # DotaProject
 This is a C# app that is only created to make a REST API with the CRUD operations
 
-Header 1
 How to run 
 ===========
 
